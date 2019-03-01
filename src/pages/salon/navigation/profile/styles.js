@@ -20,6 +20,7 @@ const styles = theme => ({
   },
   item: {
     marginBottom: theme.spacing.unit * 3,
+    cursor: 'pointer',
   },
   avatar: {
     backgroundColor: theme.palette.primary.main,

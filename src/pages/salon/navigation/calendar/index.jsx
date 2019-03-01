@@ -3,9 +3,11 @@ import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import Divider from '@material-ui/core/Divider';
 
 import Topbar from '../../../../components/topbar';
 import CardItem from '../../../../components/card-item';
+import { getCalendar } from '../../../../service';
 
 const styles = theme => ({
   root: {
@@ -24,30 +26,47 @@ const styles = theme => ({
   },
 });
 
-const Calendar = ({ classes, history }) => {
-  return (
-    <div>
-      <Topbar title="Agenda" />
-      <List className={classes.root} subheader={<li />}>
-        {[...Array(10).keys()].map(sectionId => (
-          <li key={`section-${sectionId}`} className={classes.listSection}>
-            <ul className={classes.ul}>
-              <ListSubheader>{`1${sectionId}/03/2019`}</ListSubheader>
-              {[...Array(6).keys()].map(item => (
-                <CardItem
-                  key={item}
-                  handleClick={() => history.push('/agendamento/123')}
-                  avatar="CC"
-                  primary="Corte de Cabelo - R$30,00"
-                  secondary="10:00 ~ 11:00 - Gabriel Genê"
-                />
-              ))}
-            </ul>
-          </li>
-        ))}
-      </List>
-    </div>
-  );
-};
+class Calendar extends React.Component {
+  state = {
+    calendar: [],
+  };
+
+  componentDidMount() {
+    getCalendar().then(calendar => this.setState({ calendar }));
+  }
+
+  render() {
+    const { classes, history } = this.props;
+
+    return (
+      <div>
+        <Topbar title="Agenda" />
+        <List className={classes.root} subheader={<li />}>
+          {this.state.calendar.map(c => (
+            <li key={c.date} className={classes.listSection}>
+              <ul className={classes.ul}>
+                <ListSubheader color="primary" style={{ textAlign: 'center' }}>
+                  {c.date}
+                </ListSubheader>
+                <Divider />
+                {c.schedules.map(s => (
+                  <div key={s.id}>
+                    <CardItem
+                      handleClick={() => history.push('/agendamento/123')}
+                      avatar={s.service.substring(0, 2).toUpperCase()}
+                      primary={`${s.service} - ${s.price}`}
+                      secondary={`${s.duration} - ${s.client}`}
+                    />
+                    <Divider />
+                  </div>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </List>
+      </div>
+    );
+  }
+}
 
 export default withStyles(styles)(withRouter(Calendar));

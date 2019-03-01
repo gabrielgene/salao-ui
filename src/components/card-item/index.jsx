@@ -1,5 +1,4 @@
 import React from 'react';
-// import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -26,7 +25,6 @@ const CardItem = ({
   primary,
   secondary,
 }) => (
-  // <Paper elevation={2} className={classes.item}>
   <ListItem onClick={handleClick}>
     <Avatar color="primary" className={classes.avatar}>
       {avatar}
