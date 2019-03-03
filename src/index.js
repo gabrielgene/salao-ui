@@ -11,7 +11,9 @@ import Landing from './pages/common/landing';
 import Login from './pages/common/login';
 
 import CalendarItem from './pages/salon/calendar-item';
-import Navigation from './pages/salon/navigation';
+import SalonNavigation from './pages/salon/navigation';
+import ClientNavigation from './pages/client/navigation';
+import SalonProfile from './pages/salon/profile';
 
 import Register from './pages/client/register';
 
@@ -24,14 +26,30 @@ const App = () => (
       <div>
         <Route exact path="/" component={Landing} />
 
-        <Route path="/salao/entrar" component={SalonLogin} />
-        <Route path="/cliente/entrar" component={ClientLogin} />
-        <Route path="/cliente/registro" component={Register} />
+        <Route exact path="/salao/entrar" component={SalonLogin} />
+        <Route exact path="/cliente/entrar" component={ClientLogin} />
+        <Route exact path="/cliente/registro" component={Register} />
 
-        <Route path="/salao/inicio" component={Navigation} />
-        <Route path="/cliente/inicio" component={Navigation} />
+        <Route
+          exact
+          path="/salao/agenda"
+          component={() => <SalonNavigation page={0} />}
+        />
+        <Route
+          exact
+          path="/salao/perfil"
+          component={() => <SalonNavigation page={1} />}
+        />
 
-        <Route path="/agendamento/:id" component={CalendarItem} />
+        <Route exact path="/cliente/inicio" component={ClientNavigation} />
+
+        <Route
+          exact
+          path="/salao/:name"
+          component={() => <SalonProfile back />}
+        />
+
+        <Route exact path="/agendamento/:id" component={CalendarItem} />
       </div>
     </Router>
   </MuiThemeProvider>

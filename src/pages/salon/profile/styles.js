@@ -38,6 +38,10 @@ const styles = theme => ({
     height: theme.spacing.unit * 15,
     objectFit: 'cover',
   },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
 });
 
 export default withStyles(styles);

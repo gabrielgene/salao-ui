@@ -5,9 +5,9 @@ import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 
-import Topbar from '../../../../components/topbar';
-import CardItem from '../../../../components/card-item';
-import { getCalendar } from '../../../../service';
+import Topbar from '../../../components/topbar';
+import ScheduleItem from '../../../components/schedule-item';
+import { getCalendar } from '../../../service';
 
 const styles = theme => ({
   root: {
@@ -29,20 +29,22 @@ const styles = theme => ({
 class Calendar extends React.Component {
   state = {
     calendar: [],
+    loading: true,
   };
 
   componentDidMount() {
-    getCalendar().then(calendar => this.setState({ calendar }));
+    getCalendar().then(calendar => this.setState({ calendar, loading: false }));
   }
 
   render() {
     const { classes, history } = this.props;
+    const { loading, calendar } = this.state;
 
     return (
       <div>
         <Topbar title="Agenda" />
         <List className={classes.root} subheader={<li />}>
-          {this.state.calendar.map(c => (
+          {calendar.map(c => (
             <li key={c.date} className={classes.listSection}>
               <ul className={classes.ul}>
                 <ListSubheader color="primary" style={{ textAlign: 'center' }}>
@@ -51,7 +53,7 @@ class Calendar extends React.Component {
                 <Divider />
                 {c.schedules.map(s => (
                   <div key={s.id}>
-                    <CardItem
+                    <ScheduleItem
                       handleClick={() => history.push('/agendamento/123')}
                       avatar={s.service.substring(0, 2).toUpperCase()}
                       primary={`${s.service} - ${s.price}`}

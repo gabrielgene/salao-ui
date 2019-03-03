@@ -1,6 +1,5 @@
 import React from 'react';
 import PlaceIcon from '@material-ui/icons/Place';
-import Paper from '@material-ui/core/Paper';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -8,16 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import withStyles from './styles.js';
-import CardItem from '../../../../components/card-item';
-import src from '../../../../assets/barber.jpeg';
+import CardItem from '../../../components/card-item';
+import src from '../../../assets/barber.jpeg';
 
 const Info = ({ classes }) => (
   <div>
     <img className={classes.img} src={src} alt="Barber" />
     <div className={classes.list}>
-      <Paper elevation={2} className={classes.item}>
-        <CardItem primary="Engenho velho de brotas" avatar={<PlaceIcon />} />
-      </Paper>
+      <CardItem primary="Engenho velho de brotas" avatar={<PlaceIcon />} />
       <div className={classes.accordion}>
         <ExpansionPanel defaultExpanded>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
