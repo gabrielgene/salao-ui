@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Topbar from '../../../components/topbar';
 import ScheduleItem from '../../../components/schedule-item';
@@ -30,7 +29,6 @@ const styles = theme => ({
 class Calendar extends React.Component {
   state = {
     calendar: [],
-    loading: true,
   };
 
   componentDidMount() {
@@ -39,7 +37,7 @@ class Calendar extends React.Component {
 
   render() {
     const { classes, history } = this.props;
-    const { loading, calendar } = this.state;
+    const { calendar } = this.state;
 
     return (
       <div>

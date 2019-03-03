@@ -1,5 +1,4 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import CardItem from '../../../components/card-item';
 import withStyles from './styles.js';

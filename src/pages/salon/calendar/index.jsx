@@ -29,7 +29,6 @@ const styles = theme => ({
 class Calendar extends React.Component {
   state = {
     calendar: [],
-    loading: true,
   };
 
   componentDidMount() {
@@ -38,7 +37,7 @@ class Calendar extends React.Component {
 
   render() {
     const { classes, history } = this.props;
-    const { loading, calendar } = this.state;
+    const { calendar } = this.state;
 
     return (
       <div>
