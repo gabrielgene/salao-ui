@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import withStyles from './styles.js';
-import CardItem from '../../../components/card-item';
-import src from '../../../assets/barber.jpeg';
+import CardItem from '../../components/card-item';
+import src from '../../assets/barber.jpeg';
 
 const Info = ({ classes }) => (
   <div>

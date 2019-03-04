@@ -4,8 +4,8 @@ import List from '@material-ui/core/List';
 import DomainIcon from '@material-ui/icons/Domain';
 import { withRouter } from 'react-router-dom';
 
-import Topbar from '../../../components/topbar';
-import CardItem from '../../../components/card-item';
+import Topbar from '../../components/topbar';
+import CardItem from '../../components/card-item';
 
 const styles = theme => ({
   root: {

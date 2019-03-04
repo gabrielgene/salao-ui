@@ -5,9 +5,9 @@ import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 
-import Topbar from '../../../components/topbar';
-import ScheduleItem from '../../../components/schedule-item';
-import { getCalendar } from '../../../service';
+import Topbar from '../../components/topbar';
+import ScheduleItem from '../../components/schedule-item';
+import { getCalendar } from '../../service';
 
 const styles = theme => ({
   root: {
@@ -32,7 +32,8 @@ class Calendar extends React.Component {
   };
 
   componentDidMount() {
-    getCalendar().then(calendar => this.setState({ calendar, loading: false }));
+    // getCalendar().then(calendar => this.setState({ calendar, loading: false }));
+    this.setState({ calendar: getCalendar() });
   }
 
   render() {

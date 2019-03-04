@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
-import Topbar from '../../../components/topbar';
+import Topbar from '../../components/topbar';
 
 const styles = theme => ({
   root: {
@@ -74,7 +74,7 @@ const Login = ({ classes, history, salon }) => (
           size="large"
           className={classes.button}
           onClick={() =>
-            history.push(salon ? '/salao/inicio' : '/cliente/inicio')
+            history.push(salon ? '/salao-agenda' : '/cliente-agenda')
           }
         >
           Entrar

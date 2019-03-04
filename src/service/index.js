@@ -20,4 +20,5 @@ const calendarMock = [...Array(10).keys()].map(key => ({
   })),
 }));
 
-export const getCalendar = () => api.get('/').then(res => calendarMock);
+// export const getCalendar = () => api.get('/').then(res => calendarMock);
+export const getCalendar = () => calendarMock;

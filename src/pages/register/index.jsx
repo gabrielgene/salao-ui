@@ -2,7 +2,8 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import Topbar from '../../../components/topbar';
+import { withRouter } from 'react-router-dom';
+import Topbar from '../../components/topbar';
 
 const styles = theme => ({
   root: {
@@ -22,9 +23,9 @@ const styles = theme => ({
   },
 });
 
-const Login = ({ classes, history }) => (
+const Login = ({ classes, history, back }) => (
   <div>
-    <Topbar title="Criar conta" />
+    <Topbar title="Criar conta" back={back} />
     <div className={classes.root}>
       <TextField
         id="login"
@@ -76,7 +77,7 @@ const Login = ({ classes, history }) => (
         color="primary"
         size="large"
         className={classes.button}
-        onClick={() => history.push('/inicio')}
+        onClick={() => history.push('/cliente-agenda')}
       >
         Registrar
       </Button>
@@ -84,4 +85,4 @@ const Login = ({ classes, history }) => (
   </div>
 );
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(withRouter(Login));

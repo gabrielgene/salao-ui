@@ -7,18 +7,27 @@ import defaultTheme from './theme';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
-import Landing from './pages/common/landing';
-import Login from './pages/common/login';
-
-import CalendarItem from './pages/salon/calendar-item';
-import SalonNavigation from './pages/salon/navigation';
-import ClientNavigation from './pages/client/navigation';
-import SalonProfile from './pages/salon/profile';
-
-import Register from './pages/client/register';
+import Landing from './pages/landing';
+import Login from './pages/login';
+import Register from './pages/register';
+import SalonNavigation from './pages/salon-navigation';
+import CalendarItem from './pages/calendar-item';
+import ClientNavigation from './pages/client-navigation';
+import Profile from './pages/profile';
+import ServiceRequest from './pages/service-request';
+import CalendarRequest from './pages/calendar-request';
 
 const SalonLogin = () => <Login salon />;
+const SalonCalendar = () => <SalonNavigation page={0} />;
+const SalonProfile = () => <SalonNavigation page={1} />;
+
 const ClientLogin = () => <Login />;
+const ClientCalendar = () => <ClientNavigation page={0} />;
+const ClientProfile = () => <ClientNavigation page={1} />;
+const ClientMySalon = () => <ClientNavigation page={2} />;
+const ClientRegister = () => <Register back />;
+
+const SalonFullProfile = () => <Profile fullProfile />;
 
 const App = () => (
   <MuiThemeProvider theme={defaultTheme}>
@@ -26,30 +35,21 @@ const App = () => (
       <div>
         <Route exact path="/" component={Landing} />
 
-        <Route exact path="/salao/entrar" component={SalonLogin} />
-        <Route exact path="/cliente/entrar" component={ClientLogin} />
-        <Route exact path="/cliente/registro" component={Register} />
+        <Route path="/salao-entrar" component={SalonLogin} />
+        <Route path="/salao-agenda" component={SalonCalendar} />
+        <Route path="/salao-perfil" component={SalonProfile} />
+        <Route path="/agendamento/:id" component={CalendarItem} />
 
-        <Route
-          exact
-          path="/salao/agenda"
-          component={() => <SalonNavigation page={0} />}
-        />
-        <Route
-          exact
-          path="/salao/perfil"
-          component={() => <SalonNavigation page={1} />}
-        />
+        <Route path="/cliente-entrar" component={ClientLogin} />
+        <Route path="/cliente-registrar" component={ClientRegister} />
 
-        <Route exact path="/cliente/inicio" component={ClientNavigation} />
+        <Route path="/cliente-agenda" component={ClientCalendar} />
+        <Route path="/cliente-perfil" component={ClientProfile} />
+        <Route path="/cliente-saloes" component={ClientMySalon} />
 
-        <Route
-          exact
-          path="/salao/:name"
-          component={() => <SalonProfile back />}
-        />
-
-        <Route exact path="/agendamento/:id" component={CalendarItem} />
+        <Route exact path="/salao/:name" component={SalonFullProfile} />
+        <Route exact path="/solicitar-servico" component={ServiceRequest} />
+        <Route exact path="/solicitar-agenda" component={CalendarRequest} />
       </div>
     </Router>
   </MuiThemeProvider>

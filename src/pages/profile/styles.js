@@ -33,6 +33,14 @@ const styles = theme => ({
     right: theme.spacing.unit * 2,
     width: '100%',
   },
+  fullProfileFab: {
+    position: 'fixed',
+    bottom: theme.spacing.unit * 4,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    right: theme.spacing.unit * 2,
+    width: '100%',
+  },
   img: {
     width: '100%',
     height: theme.spacing.unit * 15,

@@ -4,14 +4,27 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import DateIcon from '@material-ui/icons/DateRange';
 import PersonIcon from '@material-ui/icons/Person';
 import DomainIcon from '@material-ui/icons/Domain';
+import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 
-import Calendar from '../../common/calendar';
+import Calendar from '../calendar';
 import Profile from '../register';
 import MySalons from '../my-salons';
-import withStyles from './styles.js';
 
-const Navigation = ({ classes }) => {
+const styles = theme => ({
+  root: {
+    position: 'fixed',
+    bottom: 0,
+    width: '100%',
+    boxShadow: '0 -4px 2px -2px rgba(0,0,0,0.05)',
+  },
+});
+
+const Navigation = ({ classes, history, page }) => {
   const [value, setValue] = React.useState(0);
+  React.useEffect(() => {
+    setValue(page);
+  }, []);
 
   return (
     <div>
@@ -21,7 +34,13 @@ const Navigation = ({ classes }) => {
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
-          setValue(newValue);
+          if (newValue === 0) {
+            history.push('/cliente-agenda');
+          } else if (newValue === 1) {
+            history.push('/cliente-perfil');
+          } else {
+            history.push('/cliente-saloes');
+          }
         }}
         showLabels
         className={classes.root}
@@ -34,4 +53,4 @@ const Navigation = ({ classes }) => {
   );
 };
 
-export default withStyles(Navigation);
+export default withStyles(styles)(withRouter(Navigation));

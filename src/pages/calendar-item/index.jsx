@@ -10,7 +10,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PersonIcon from '@material-ui/icons/Person';
 import PhoneIcon from '@material-ui/icons/Phone';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
-import CardItem from '../../../components/card-item';
+import CardItem from '../../components/card-item';
 
 const styles = theme => ({
   root: {
@@ -64,7 +64,7 @@ const CalendarItem = props => {
           variant="contained"
           color="secondary"
           className={classes.button}
-          onClick={() => history.push('/inicio')}
+          onClick={() => history.goBack()}
         >
           Cancelar Agendamento
         </Button>

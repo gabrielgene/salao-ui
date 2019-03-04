@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-import barberSVG from '../../../assets/barber.svg';
+import barberSVG from '../../assets/barber.svg';
 
 const styles = theme => ({
   root: {
@@ -43,7 +43,7 @@ const Landing = ({ classes, history }) => (
       color="primary"
       size="large"
       className={classes.button}
-      onClick={() => history.push('/cliente/entrar')}
+      onClick={() => history.push('/cliente-entrar')}
     >
       Entrar Agora
     </Button>
@@ -52,7 +52,7 @@ const Landing = ({ classes, history }) => (
       variant="contained"
       className={classes.button}
       size="large"
-      onClick={() => history.push('/cliente/registro')}
+      onClick={() => history.push('/cliente-registrar')}
     >
       Criar Conta
     </Button>
@@ -61,7 +61,7 @@ const Landing = ({ classes, history }) => (
       className={classes.button}
       size="large"
       color="secondary"
-      onClick={() => history.push('/salao/entrar')}
+      onClick={() => history.push('/salao-entrar')}
     >
       Tenho um estabelecimento
     </Button>
